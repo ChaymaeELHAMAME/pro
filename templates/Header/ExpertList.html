@@ -1,0 +1,315 @@
+<!--Head and Link-->
+{% include  'header/header.html' %}
+      <!--Header section start -->
+      {% include  'header/naviag.html' %}
+      <!--Header section end -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        #container{
+            background-color: #dddddd;
+        }
+        .table-title {
+    padding-bottom: 15px;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+.table-title .btn {
+    color: #ffffff;
+    float: right;
+    font-size: 16px;
+    background: #0bb663;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.table-title .btn:hover, .table-title .btn:focus {
+    color: #566787;
+    background: #f2f2f2;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+        .wrapper{
+            width: 700px;
+            margin: 0 auto;
+        }
+        table tr td:last-child{
+            width: 120px;
+        }
+
+        .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    </style>
+
+
+      <!-- services section start -->
+         <div class="container" >
+            <h1 class="pull-left" style="padding-top: 10px; ">Liste des Expert</h1>
+            <div class="services_section_2" style="width: 100%; margin-left: -65px;">
+               <div class="row" style="margin-right: 25px">
+                  <div class="col-lg-10">
+                      <div class="wrapper" style="width: 100%">
+                           <div class="table-title" style="width: 100%;">
+                                <div class="row">
+                                    <div class="col-sm-7" style="padding-right: 250px; padding-top: 15px">
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#mymodal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></button>
+                                     </div>
+                                </div>
+                            </div>
+                        <div  style="padding-right:45px;position: relative">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Cin</th>
+                                        <th>Adresse</th>
+                                        <th>Tel</th>
+                                        <th>email</th>
+                                        <th>Spechialite</th>
+                                        <th>Affiliation</th>
+                                        <th>Disponibilite</th>
+                                        <th>UserName</th>
+                                        <th>Password</th>
+                                        <th style="color:limegreen;width: 20px">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     {% for exp in experts %}
+                                        <tr>
+                                        <td>{{ exp.id_exp }}</td>
+                                        <td>{{ exp.nom_exp }}</td>
+                                        <td>{{ exp.pren_exp }}</td>
+                                        <td>{{ exp.cin_exp }}</td>
+                                        <td>{{ exp.add_exp }}</td>
+                                        <td>{{ exp.tel_exp }}</td>
+                                        <td>{{ exp.email_exp }}</td>
+                                        <td>{{ exp.special_exp }}</td>
+                                        <td>{{ exp.affiliation_exp }}</td>
+                                        <td>{{ exp.dispo }}</td>
+                                        <td>{{ exp.user_exp }}</td>
+                                        <td>{{ exp.passwd_exp }}</td>
+
+                                        <td>
+                                            <a href="" class="me-3" data-toggle="modal" data-target="#uptmodal{{ exp.id_exp }}"><span class="bi bi-pencil"></span></a>
+                                            <a href="/DelExp/{{ exp.id_exp }}/delete" ><span class="bi bi-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                     <!--Update Expert Modak-->
+                                         <div class="modal" tabindex="-1" id="uptmodal{{ exp.id_exp }}">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title"Modifier Expert</h5>
+                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                        <div class="form-container">
+                                                        <form action="/UptExp/{{ exp.id_exp }}/edit" method="POST">
+                                                          <div class="form-group">
+                                                            <label for="nom">Nom :</label>
+                                                            <input type="text" id="nom" name="nom" value="{{ exp.nom_exp }}" required>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">Prenom :</label>
+                                                            <input type="text" id="prenom" name="prenom" value="{{ exp.pren_exp }}" required>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">cin :</label>
+                                                            <input type="text" id="cin" name="cin" value="{{ exp.cin_exp }}" >
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">address :</label>
+                                                            <input type="text" id="adresse" name="adresse" value="{{ exp.add_exp }}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">Tel :</label>
+                                                            <input type="tel" id="tel" name="tel" value="{{ exp.tel_exp }}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="email">Email :</label>
+                                                            <input type="email" id="email" name="email" value="{{ exp.email_exp }}" required>
+                                                          </div>
+                                                            <br>
+                                                            <br>
+                                                          <div class="form-group">
+                                                            <label for="email">Specialite :</label>
+                                                            <select id="spec" name="spec" value="{{ exp.special_exp }}" required>
+                                                              <option value="{{ exp.special_exp }}">Sélectionnez une Specialite</option>
+                                                              <option value="dev">Developpement</option>
+                                                              <option value="ind">Industrie</option>
+                                                              <option value="res">Reseaux</option>
+                                                            </select>
+                                                          </div>
+                                                            <br>
+                                                            <br>
+                                                          <div class="form-group">
+                                                            <label for="pays">Affiliation :</label>
+                                                            <input id="text" name="affil" value="{{ exp.affiliation_exp }}" required />
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="pays">Password :</label>
+                                                            <input id="text" name="pass" value="{{ exp.passwd_exp }}" required />
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <button type="submit">Modifier</button>
+                                                          </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                              </div>
+                                                        </form>
+
+
+
+                        </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+
+
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+               </div>
+            </div>
+         </div>
+      <!-- services section end -->
+      <!-- footer section start -->
+<div class="modal" tabindex="-1" id="mymodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+{#        <p>Modal body text goes here.</p>#}
+          <div class="form-container" >
+    <h2>Ajouter Expert</h2>
+    <form action="/addExpert" method="POST">
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label for="nom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label for="nom">cin :</label>
+        <input type="text" id="cin" name="cin" >
+      </div>
+      <div class="form-group">
+        <label for="nom">address :</label>
+        <input type="text" id="adresse" name="adresse" >
+      </div>
+      <div class="form-group">
+        <label for="nom">Tel :</label>
+        <input type="tel" id="tel" name="tel" >
+      </div>
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+        <br>
+        <br>
+      <div class="form-group">
+        <label for="email">Specialite :</label>
+        <select id="spec" name="spec" required>
+          <option value="">Sélectionnez une Specialite</option>
+          <option value="dev">Developpement</option>
+          <option value="ind">Industrie</option>
+          <option value="res">Reseaux</option>
+        </select>
+      </div>
+        <br>
+        <br>
+      <div class="form-group">
+        <label for="pays">Affiliation :</label>
+        <input id="text" name="affil" required />
+      </div>
+      <div class="form-group">
+        <label for="pays">Username :</label>
+        <input id="text" name="user" required />
+      </div>
+      <div class="form-group">
+        <label for="pays">Password :</label>
+        <input id="text" name="pass" required />
+      </div>
+      <div class="form-group">
+        <button type="submit">Envoyer</button>
+      </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+  </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      </div>
+      {% include  'header/footer.html' %}

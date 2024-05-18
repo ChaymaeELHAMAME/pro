@@ -1,0 +1,375 @@
+<!--Head and Link-->
+{% if session.exp_user %}
+
+{% include  'Client/header.html' %}
+      <!--Header section start -->
+
+      {% include  'Client/naviag.html' %}
+         <!--banner section start -->
+            <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+              <img class="w3-image" src="{{url_for('static', filename='/static_app/images/architect.jpg')}}" alt="Architecture" width="1500" height="800">
+              <div class="w3-display-middle w3-margin-top w3-center">
+                <h1 class="w3-xxlarge w3-text-white">
+                <span class="w3-hide-small w3-text-light-grey">Welcome</span></h1>
+                <span class="w3-padding w3-black w3-opacity-min">
+                   Expert <b>{{ session['exp_user'] }}</b>
+                </span>
+              </div>
+            </header>
+
+
+        <!-- Project Section -->
+
+      <!--Header section end -->
+
+
+
+    <div class="w3-container w3-padding-32" id="projects">
+         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+    </div>
+      <!-- services section start -->
+      <div class="services_section layout_padding" id="container">
+         <div class="container" >
+            <h1 class="pull-left">Liste des Chercheur avec ses projets</h1>
+            <div class="services_section_2">
+               <div class="row">
+                  <div class="col-lg-10">
+                      <div class="wrapper" style="width: 90%;">
+                           <div class="table-title" style="width: 100%;">
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        <div class="container-fluid">
+                                <table class="table table-bordered table-striped" style="margin-left: -90px">
+                                    <thead>
+
+                                        <tr>
+                                        <th>Nom de Chercheur</th>
+                                        <th>Email</th>
+                                        <th>Technologie</th>
+                                        <th>Sujet de Projet</th>
+                                        <th>Le Produit</th>
+                                        <th>Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for che in chercheur %}
+                                        {% for projet in che.projets %}
+                                            <tr>
+                                                <td>{{ che.nom_che }}</td>
+                                                <td>{{ che.email_che }}</td>
+                                                <td>{{ che.technologie }}</td>
+                                                <td>{{ projet.sujet }}</td>
+                                                <td><a href="{{ url_for('auth.uploadfile', id_upl=projet.id_prj) }}">{{ projet.filename }}</a></td>
+                                                <td style="color: #1e7e34"><b>{{ projet.grade }}</b></td>
+                                                <td>
+                                                    <a href="{{ url_for('auth.testprojet', id = che.id_che) }}" class="me-3"><span>Evaluer</span></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- services section end -->
+      <!-- footer section start -->
+
+      <!-- footer section end -->
+      <!-- copyright section start -->
+
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+          </div>
+
+
+
+
+         <!--banner section end -->
+      </div>
+      <!--Header section end -->
+      <!--about section start -->
+      <div class="about_section layout_padding">
+         <div class="container">
+            <h1 class="about_taital">About Us</h1>
+            <p class="about_text">It is a long established fact that a reader will be distracted by the readable content of a page when</p>
+            <div class="about_section_2">
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="about_image"><img src="{{ url_for('static', filename='/static_app/images/about-img.png') }}"></div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="about_taital_main">
+                        <p class="lorem_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words </p>
+                        <div class="read_bt"><a href="#">Read More</a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--about section end -->
+      <!-- services section start -->
+      <div class="services_section layout_padding">
+         <div class="container">
+            <h1 class="services_taital">Qu'est ce que le site fait</h1>
+            <p class="about_text">It is a long established fact that a reader will be distracted by the readable content of a page when</p>
+            <div class="services_section_2">
+               <div class="row">
+                  <div class="col-lg-4">
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-1.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">Sélection de projet</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-4.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">Evaluation de projet</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-2.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">Avoir votre grade de projet</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-5.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">Contacter l'expert</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-3.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">corriger votre projet</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                     <div class="icon_box">
+                        <div class="icon_1"><img src="{{ url_for('static', filename='/static_app/images/icon-6.png') }}"></div>
+                     </div>
+                     <h4 class="selection_text">Management and Asset</h4>
+                     <p class="ipsum_text">There are many variations of passages of Lorem Ipsum available, but the form, by injected humour, or randomised</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- services section end -->
+      <!-- blog section start -->
+      <div class="blog_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="blog_img"><img src="{{ url_for('static', filename='/static_app/images/blog-img.png') }}"></div>
+               </div>
+               <div class="col-md-6">
+                  <h1 class="blog_taital">Développez facilement votre projet </h1>
+                  <p class="blog_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                      or randomised words There uffered alteration in some form, by injected humour, or randomised words </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- blog section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <h1 class="contact_taital">Rester en contact avec nous</h1>
+            <p class="contact_text">majority have suffered alteration in some form, by injected humour, or </p>
+            <div class="contact_section_2 layout_padding">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="contact_main">
+                        <input type="text" class="mail_text" placeholder="Full Name" name="Full Name">
+                        <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number">
+                        <input type="text" class="mail_text" placeholder="Email" name="Email">
+                        <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                        <div class="send_bt"><a href="#">SEND</a></div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="map_main">
+                        <div class="map-responsive">
+                           <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+      <!-- testimonial section start -->
+      <div class="testimonial_section layout_padding">
+         <div id="my_carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+               <li data-target="#my_carousel" data-slide-to="1"></li>
+               <li data-target="#my_carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <h1 class="testimonial_taital">Testimonial</h1>
+                     <p class="testimonial_text">majority have suffered alteration in some form, by injected humour, or </p>
+                     <div class="testimonial_section_2">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Jonimo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Mark Duo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <h1 class="testimonial_taital">Testimonial</h1>
+                     <p class="testimonial_text">majority have suffered alteration in some form, by injected humour, or </p>
+                     <div class="testimonial_section_2">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Jonimo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Mark Duo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <h1 class="testimonial_taital">Testimonial</h1>
+                     <p class="testimonial_text">majority have suffered alteration in some form, by injected humour, or </p>
+                     <div class="testimonial_section_2">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Jonimo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="testimonial_box">
+                                 <div class="jonimo_taital_main">
+                                    <h4 class="jonimo_text">Mark Duo</h4>
+                                    <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                                    <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
+                                 </div>
+                                 <p class="dummy_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- testimonial section end -->
+      <!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="location_main">
+               <div class="location_text"><img src="images/map-icon.png"><span class="padding_left_10"><a href="#">Location</a></span></div>
+               <div class="location_text center"><img src="images/call-icon.png"><span class="padding_left_10"><a href="#">Call ; 01 1234567890</a></span></div>
+               <div class="location_text right"><img src="images/mail-icon.png"><span class="padding_left_10"><a href="#">demo@gmail.com</a></span></div>
+            </div>
+            <div class="footer_section_2">
+               <div class="row">
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">About</h2>
+                     <p class="footer_text">There are many variations of passages of Lorem Ipsum available, but the majority havThere are many variations of passages of Lorem Ipsum available, but the majority hav</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">Services Link</h2>
+                     <p class="footer_text">There are many variations of passages of Lorem Ipsum available, but the majority havThere are many variations of passages of Lorem Ipsum available, but the majority hav</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">Subscribe</h2>
+                     <input type="text" class="Enter_text" placeholder="Enter Your Email" name="Enter Your Email">
+                     <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+                     <div class="social_icon">
+                        <ul>
+                           <li><a href="#"><img src="images/fb-icon.png"></a></li>
+                           <li><a href="#"><img src="images/twitter-icon.png"></a></li>
+                           <li><a href="#"><img src="images/linkedin-icon.png"></a></li>
+                           <li><a href="#"><img src="images/instagram-icon.png"></a></li>
+                           <li><a href="#"><img src="images/youtub-icon.png"></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text">Copyright 2020 All Rights Reserved.<a href="https://html.design"> Free  html Templates</a></p>
+         </div>
+      </div>
+
+
+
+        <!--END MODALS BOOSTRAP -->
+
+
+
+
+
+
+
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+     {% include  'Client/footer.html' %}
+
+{% endif %}

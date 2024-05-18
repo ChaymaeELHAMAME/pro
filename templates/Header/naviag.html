@@ -1,0 +1,39 @@
+<style>
+    #log{margin-left: 75px;}
+</style>
+<div class="header_section">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div style="margin-top: -20px" class="logo"><a href="{{url_for('home')}}"><img width="130px" height="50px" src="{{url_for('static', filename='/static_login/images/logo.png')}}"></a></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{{url_for('home')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{url_for('ChecheurList')}}">Chercheurs</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{url_for('ExpertList')}}">Experts</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{url_for('ProjetList')}}">Projets</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{url_for('contact')}}">Contact Us</a>
+                  </li>
+                   {% if session.user %}
+                        <li class="nav-item" id="log" style="margin-left: 220px">
+                           <button  type="button" class="btn btn-danger"><a  href="{{url_for('logout')}}">Logout</a></button>
+                        </li>
+                    {% else %}
+                        <li class="nav-item" id="log" style="margin-left: 220px">
+                           <button  type="button" class="btn btn-success"><a  href="{{url_for('login')}}">Login</a></button>
+                        </li>
+                    {% endif %}
+               </ul>
+            </div>
+         </nav>
+      </div>

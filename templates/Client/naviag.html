@@ -1,0 +1,49 @@
+<style>
+    #log{margin-left: 75px;}
+</style>
+{#<div class="header_section">#}
+{#         <nav class="navbar navbar-expand-lg navbar-light bg-light">#}
+{#            <div style="margin-top: -20px" class="logo">#}
+{#                <a href="{{url_for('auth.index')}}">#}
+{#                     <img width="130px" height="55px" src="{{url_for('static', filename='/static_login/images/logo.png')}}" alt="">#}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#            <div class="collapse navbar-collapse" >#}
+{#               <ul class="navbar-nav mr-auto" style="margin-left: 800px">#}
+{#                       {% if session.che_user or session.exp_user %}#}
+{#                        <li class="nav-item" style="margin-left: 220px">#}
+{#                           <button  type="button" class="btn btn-danger"><a href="/logout">Logout</a></button>#}
+{#                        </li>#}
+{#                    {% else %}#}
+{#                        <li class="nav-item" style="margin-left: 220px">#}
+{#                           <button  type="button" class="btn btn-success"><a href="{{url_for('login')}}">Login</a></button>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{#               </ul>#}
+{#            </div>#}
+{#         </nav>#}
+
+<nav>
+    <div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>Gestion</b> Appel Projet</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+                   {% if session.che_user or session.exp_user %}
+{#                        <li class="nav-item" style="margin-left: 220px">#}
+{#                           <button  type="button" class="btn btn-danger"><a href="/logout">Logout</a></button>#}
+{#                        </li>#}
+                       <a href="/logout" style="background-color: red; border-radius: 10px;" class="w3-bar-item w3-button">Logout</a>
+                    {% else %}
+{#                        <li class="nav-item" style="margin-left: 220px">#}
+{#                           <button  type="button" class="btn btn-success"><a href="{{url_for('login')}}">Login</a></button>#}
+{#                        </li>#}
+                       <a href="/login" style="background-color: #1af54d; border-radius: 10px;" class="w3-bar-item w3-button">Login</a>
+                       <a href="/register" style="color: #1b1e21; border-radius: 10px;" class="w3-bar-item w3-button">Register</a>
+                    {% endif %}
+    </div>
+  </div>
+</div>
+
+</nav>

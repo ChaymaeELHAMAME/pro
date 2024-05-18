@@ -1,0 +1,321 @@
+<!--Head and Link-->
+{% include  'header/header.html' %}
+      <!--Header section start -->
+      {% include  'header/naviag.html' %}
+      <!--Header section end -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <style>
+        #container{
+            background-color: #dddddd;
+        }
+        .table-title {
+    padding-bottom: 15px;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+.table-title .btn {
+    color: #ffffff;
+    float: right;
+    font-size: 16px;
+    background: #0bb663;
+    border: none;
+    min-width: 50px;
+    border-radius: 2px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.table-title .btn:hover, .table-title .btn:focus {
+    color: #566787;
+    background: #f2f2f2;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+        .wrapper{
+            width: 700px;
+            margin: 0 auto;
+        }
+        table tr td:last-child{
+            width: 120px;
+        }
+
+        .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    </style>
+
+
+      <!-- services section start -->
+         <div class="container" >
+            <h1 class="pull-left" style="padding-top: 10px; ">Liste des Chercheurs</h1>
+            <div class="services_section_2" style="width: 100%; margin-left: -65px;">
+               <div class="row">
+                  <div class="col-lg-10">
+                      <div class="wrapper" style="width: 100%">
+                           <div class="table-title" style="width: 100%;">
+                                <div class="row">
+                                    <div class="col-sm-7" style="padding-right: 250px; padding-top: 15px">
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#mymodal"><i class="material-icons">&#xE147;</i> <span>Add Chercheur</span></button>
+                                     </div>
+                                </div>
+                            </div>
+                        <div >
+                                <table class="table table-bordered table-striped" style="width: 500px; margin-left: -5px">
+                                    <thead>
+                                        <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Cin</th>
+                                        <th>Adresse</th>
+                                        <th>Tel</th>
+                                        <th>email</th>
+                                        <th>Spechialite</th>
+                                        <th>Affiliation</th>
+                                        <th>Technologie</th>
+                                        <th>UserName</th>
+                                        <th>Password</th>
+                                        <th style="color:limegreen;width: 20px">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     {% for che in chercheurs %}
+                                        <tr>
+                                        <td>{{ che.id_che }}</td>
+                                        <td>{{ che.nom_che }}</td>
+                                        <td>{{ che.pren_che }}</td>
+                                        <td>{{ che.cin_che }}</td>
+                                        <td>{{ che.add_che }}</td>
+                                        <td>{{ che.tel_che }}</td>
+                                        <td>{{ che.email_che }}</td>
+                                        <td>{{ che.special_che }}</td>
+                                        <td>{{ che.affiliation_che }}</td>
+                                        <td>{{ che.techno_che }}</td>
+                                        <td>{{ che.user_che }}</td>
+                                        <td>{{ che.passwd_che }}</td>
+
+                                        <td>
+                                            <a href="/UptCherch/{{ che.id_che }}/update" class="me-3" data-toggle="modal" data-target="#uptmodal{{ che.id_che }}"><span class="bi bi-pencil"></span></a>
+                                            <a href="/DelCherch/{{ che.id_che }}/delete" ><span class="bi bi-trash"></span></a>
+                                            </td>
+                                        </tr>
+
+                     <!--Update Chercheur Modak-->
+                                         <div class="modal" tabindex="-1" id="uptmodal{{ che.id_che }}">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title"Modifier Chercheur</h5>
+                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                        <div class="form-container">
+                                                        <form action="/UptCherch/{{ che.id_che }}/edit" method="POST">
+                                                          <div class="form-group">
+                                                            <label for="nom">Nom :</label>
+                                                            <input type="text" id="nom" name="nom" value="{{ che.nom_che }}" required>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">Prenom :</label>
+                                                            <input type="text" id="prenom" name="prenom" value="{{ che.pren_che }}" required>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">cin :</label>
+                                                            <input type="text" id="cin" name="cin" value="{{ che.cin_che }}" >
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">address :</label>
+                                                            <input type="text" id="adresse" name="adresse" value="{{ che.add_che }}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="nom">Tel :</label>
+                                                            <input type="tel" id="tel" name="tel" value="{{ che.tel_che }}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="email">Email :</label>
+                                                            <input type="email" id="email" name="email" value="{{ che.email_che }}" required>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="email">Technologie :</label>
+                                                            <input type="text" id="tech" name="tech" value="{{ che.techno_che }}" required>
+                                                          </div>
+                                                            <br>
+                                                          <div class="form-group">
+                                                            <label for="email">Specialite :</label>
+                                                            <select id="spec" name="spec" value="{{ che.special_che }}" required>
+                                                              <option value="{{ che.special_che }}">Sélectionnez une Specialite</option>
+                                                              <option value="dev">Developpement</option>
+                                                              <option value="ind">Industrie</option>
+                                                              <option value="res">Reseaux</option>
+                                                            </select>
+                                                          </div>
+                                                            <br>
+                                                            <br>
+                                                          <div class="form-group">
+                                                            <label for="pays">Affiliation :</label>
+                                                            <input id="text" name="affil" value="{{ che.affiliation_che }}" required />
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="pays">Password :</label>
+                                                            <input id="text" name="pass" value="{{ che.passwd_che }}" required />
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <button type="submit">Modifier</button>
+                                                          </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                              </div>
+                                                        </form>
+
+
+
+                        </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+
+
+                                        {% endfor %}
+                                </tbody>
+
+
+
+                                </table>
+
+      <!-- services section end -->
+
+
+      <!------ Add Chercheur Modal ------>
+<div class="modal" tabindex="-1" id="mymodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter Chercheur</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+{#        <p>Modal body text goes here.</p>#}
+            <div class="form-container">
+            <form action="/addCherch" method="POST">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+              </div>
+              <div class="form-group">
+                <label for="nom">Prenom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+              </div>
+              <div class="form-group">
+                <label for="nom">cin :</label>
+                <input type="text" id="cin" name="cin" >
+              </div>
+              <div class="form-group">
+                <label for="nom">address :</label>
+                <input type="text" id="adresse" name="adresse" >
+              </div>
+              <div class="form-group">
+                <label for="nom">Tel :</label>
+                <input type="tel" id="tel" name="tel" >
+              </div>
+              <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Technologie :</label>
+                <input type="text" id="tech" name="tech" required>
+              </div>
+                <br>
+              <div class="form-group">
+                <label for="email">Specialite :</label>
+                <select id="spec" name="spec" required>
+                  <option value="">Sélectionnez une Specialite</option>
+                  <option value="dev">Developpement</option>
+                  <option value="ind">Industrie</option>
+                  <option value="res">Reseaux</option>
+                </select>
+              </div>
+                <br>
+                <br>
+              <div class="form-group">
+                <label for="pays">Affiliation :</label>
+                <input id="text" name="affil" required />
+              </div>
+              <div class="form-group">
+                <label for="pays">Username :</label>
+                <input id="text" name="user" required />
+              </div>
+              <div class="form-group">
+                <label for="pays">Password :</label>
+                <input id="text" name="pass" required />
+              </div>
+              <div class="form-group">
+                <button type="submit">Envoyer</button>
+              </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+            </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      </div>
+      {% include  'header/footer.html' %}

@@ -1,0 +1,99 @@
+{% include  'header/header.html' %}
+      <!--Header section start -->
+      {% include  'header/naviag.html' %}
+         <!--banner section start -->
+         <div class="banner_section layout_padding" style="color:white;background: url('{{url_for('static', filename='/static_app/images/gestion-projet.jpg')}}'), rgba(255,0,0,0.1); background-repeat:no-repeat;background-size: cover; ">
+            <div class="container-fluid">
+               <section class="slide-wrapper">
+                  <div class="container-fluid">
+                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                           <li data-target="#myCarousel" data-slide-to="1"></li>
+                           <li data-target="#myCarousel" data-slide-to="2"></li>
+                           <li data-target="#myCarousel" data-slide-to="3"></li>
+                           <li data-target="#myCarousel" data-slide-to="4"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                           <div class="carousel-item active">
+                              <div class="container">
+                                 <div class="banner_main">
+                                    <h1 class="banner_taital">Logiciel Pour les appels des gestions</h1>
+                                    <p class="banner_text">La gestion d'appels à projet désigne l'ensemble des processus, des méthodes et des activités mis en place pour recevoir, évaluer, sélectionner et financer des projets spécifiques soumis par des parties intéressées. </p>
+                                    </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="container">
+                                 <div class="banner_main">
+                                    <h1 class="banner_taital">Poser vos projets Ici</h1>
+                                    <p class="banner_text">La gestion d'appels à projet désigne l'ensemble des processus, des méthodes et des activités mis en place pour recevoir, évaluer, sélectionner et financer des projets spécifiques soumis par des parties intéressées.</p>
+                                    </div>
+                              </div>
+                           </div>
+                           <div class="carousel-item">
+                              <div class="container">
+                                 <div class="banner_main">
+                                    <h1 class="banner_taital">Business Agency Profit Your Marketing</h1>
+                                    <p class="banner_text">It is a long established fact that a reader will be distracted by the readable content of a page when</p>
+                                    </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <!--banner section end -->
+      </div>
+      <!-- testimonial section end -->
+      <!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="location_main">
+               <div class="location_text"><img src="{{url_for('static', filename='/static_app/images/map-icon.png')}}"><span class="padding_left_10"><a href="#">Location</a></span></div>
+               <div class="location_text center"><img src="{{url_for('static', filename='/static_app/images/call-icon.png')}}"><span class="padding_left_10"><a href="#">Call ; 01 1234567890</a></span></div>
+               <div class="location_text right"><img src="{{url_for('static', filename='/static_app/images/mail-icon.png')}}"><span class="padding_left_10"><a href="#">demo@gmail.com</a></span></div>
+            </div>
+            <div class="footer_section_2">
+               <div class="row">
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">About</h2>
+                     <p class="footer_text">There are many variations of passages of Lorem Ipsum available, but the majority havThere are many variations of passages of Lorem Ipsum available, but the majority hav</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">Services Link</h2>
+                     <p class="footer_text">There are many variations of passages of Lorem Ipsum available, but the majority havThere are many variations of passages of Lorem Ipsum available, but the majority hav</p>
+                  </div>
+                  <div class="col-lg-4">
+                     <h2 class="footer_taital">Subscribe</h2>
+                     <input type="text" class="Enter_text" placeholder="Enter Your Email" name="Enter Your Email">
+                     <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+                     <div class="social_icon">
+                        <ul>
+                           <li><a href="#"><img src="{{url_for('static', filename='/static_app/images/fb-icon.png')}}"></a></li>
+                           <li><a href="#"><img src="{{url_for('static', filename='/static_app/images/twitter-icon.png')}}"></a></li>
+                           <li><a href="#"><img src="{{url_for('static', filename='/static_app/images/linkedin-icon.png')}}"></a></li>
+                           <li><a href="#"><img src="{{url_for('static', filename='/static_app/images/instagram-icon.png')}}"></a></li>
+                           <li><a href="#"><img src="{{url_for('static', filename='/static_app/images/youtub-icon.png')}}"></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text">Copyright 2020 All Rights Reserved.<a href="https://html.design"> Free  html Templates</a></p>
+         </div>
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+     {% include  'header/footer.html' %}
+{#passwd_che= request.form['pass']#}
